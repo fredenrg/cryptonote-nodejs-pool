@@ -172,29 +172,29 @@ Explanation for each field:
 "poolHost": "your.pool.host",
 
 /* Used for storage in redis so multiple coins can share the same redis instance. */
-"coin": "graft",
+"coin": "plenteum",
 
 /* Used for front-end display */
-"symbol": "GRFT",
+"symbol": "PLE",
 
 /* Minimum units in a single coin, see COIN constant in DAEMON_CODE/src/cryptonote_config.h */
-"coinUnits": 10000000000,
+"coinUnits": 100000000, // for plenteum, this is 100, 000, 000 (1 hundred million)
 
 /* Number of coin decimals places for notifications and front-end */
-"coinDecimalPlaces": 4,
+"coinDecimalPlaces": 2, //for plenteum, this should be "2"
   
 /* Coin network time to mine one block, see DIFFICULTY_TARGET constant in DAEMON_CODE/src/cryptonote_config.h */
 "coinDifficultyTarget": 120,
 
 /* Set daemon type. Supported values: default, forknote (Fix block height + 1), bytecoin (ByteCoin Wallet RPC API, w/ block height fix), turtlecoin (ByteCoin Wallet RPC API but no block height fix required)  */
-"daemonType": "default",
+"daemonType": "turtlecoin", //for plenteum, use turtlecoin here
 
 /* Set Cryptonight algorithm settings.
    Supported algorithms: cryptonight (default). cryptonight_light and cryptonight_heavy
    Supported variants for "cryptonight": 0 (Original), 1 (Monero v7), 3 (Stellite / XTL)
    Supported variants for "cryptonight_light": 0 (Original), 1 (Aeon v7), 2 (IPBC)
    Supported blob types: 0 (Cryptonote), 1 (Forknote v1), 2 (Forknote v2), 3 (Cryptonote v2 / Masari) */
-"cnAlgorithm": "cryptonight",
+"cnAlgorithm": "cryptonight_light",
 "cnVariant": 1,
 "cnBlobType": 0,
 
@@ -233,10 +233,10 @@ Explanation for each field:
     "clusterForks": "auto",
 
     /* Address where block rewards go, and miner payments come from. */
-    "poolAddress": "GBqRuitSoU3PFPBAkXMEnLdBRWXH4iDSD6RDxnQiEFjVJhWUi1UuqfV5EzosmaXgpPGE6JJQjMYhZZgWY8EJQn8jQTsuTit",
+    "poolAddress": "<your plenteum address here>", //note that this is the address block reqards are paid to, so should be the wallet your connected to in poolwallet
 
     /* This is the integrated address prefix used for miner login validation. */
-    "intAddressPrefix": 91,
+    "intAddressPrefix": 18181,
 
     /* Poll RPC daemons for new blocks every this many milliseconds. */
     "blockRefreshInterval": 1000,
@@ -339,13 +339,13 @@ Explanation for each field:
     "maxAddresses": 50, // Split up payments if sending to more than this many addresses
     "mixin": 5, // Number of transactions yours is indistinguishable from
     "priority": 0, // The transaction priority    
-    "transferFee": 4000000000, // Fee to pay for each transaction
+    "transferFee": 30000000, // Fee to pay for each transaction
     "dynamicTransferFee": true, // Enable dynamic transfer fee (fee is multiplied by number of miners)
     "minerPayFee" : true, // Miner pays the transfer fee instead of pool owner when using dynamic transfer fee
-    "minPayment": 100000000000, // Miner balance required before sending payment
+    "minPayment": 10000000000, // Miner balance required before sending payment
     "maxPayment": null, // Maximum miner balance allowed in miner settings
     "maxTransactionAmount": 0, // Split transactions by this amount (to prevent "too big transaction" error)
-    "denomination": 10000000000 // Truncate to this precision and store remainder
+    "denomination": 100000000 // Truncate to this precision and store remainder
 },
 
 /* Module that monitors the submitted block maturities and manages rounds. Confirmed
@@ -386,16 +386,16 @@ Explanation for each field:
     "ignoreSrcIP": false // Silently ignore source IP when changing min payments, or notification settings
 },
 
-/* Coin daemon connection details (default port is 18981) */
+/* Coin daemon connection details (default port is 44015) */
 "daemon": {
     "host": "127.0.0.1",
-    "port": 18981
+    "port": 44015
 },
 
-/* Wallet daemon connection details (default port is 18980) */
+/* Wallet daemon connection details (default port is 44017) */
 "wallet": {
     "host": "127.0.0.1",
-    "port": 18982
+    "port": 44017
 },
 
 /* Redis connection info (default port is 6379) */
