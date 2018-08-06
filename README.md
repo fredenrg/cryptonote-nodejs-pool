@@ -357,7 +357,7 @@ Explanation for each field:
 
     /* Block depth required for a block to unlocked/mature. Found in daemon source as
        the variable CRYPTONOTE_MINED_MONEY_UNLOCK_WINDOW */
-    "depth": 60,
+    "depth": 20,
     "poolFee": 0.8, // 0.8% pool fee (1% total fee total including donations)
     "devDonation": 0.2, // 0.2% donation to send to pool dev
     "networkFee": 0.0, // Network/Governance fee (used by some coins like Loki)
@@ -395,7 +395,7 @@ Explanation for each field:
 /* Wallet daemon connection details */
 "wallet": {
     "host": "127.0.0.1",
-    "port": 44017 /* for eg: specify any bind port you like*/
+    "port": 8070 /* for eg: specify any bind port you like - should math the --rpc-bind-port of your service startup command (default:8070)*/
 },
 
 /* Redis connection info (default port is 6379) */
@@ -501,7 +501,7 @@ Explanation for each field:
     },
     "wallet": {
         "checkInterval": 60,
-        "rpcMethod": "getbalance"
+        "rpcMethod": "getBalance"
     }
 },
 
