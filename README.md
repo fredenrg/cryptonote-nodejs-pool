@@ -386,16 +386,16 @@ Explanation for each field:
     "ignoreSrcIP": false // Silently ignore source IP when changing min payments, or notification settings
 },
 
-/* Coin daemon connection details (default port is 44015) */
+/* Coin daemon connection details (default port is 44016) */
 "daemon": {
     "host": "127.0.0.1",
-    "port": 44015
+    "port": 44016
 },
 
-/* Wallet daemon connection details (default port is 44017) */
+/* Wallet daemon connection details */
 "wallet": {
     "host": "127.0.0.1",
-    "port": 44017
+    "port": 44017 /* for eg: specify any bind port you like*/
 },
 
 /* Redis connection info (default port is 6379) */
