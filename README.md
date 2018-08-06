@@ -187,7 +187,7 @@ Explanation for each field:
 "coinDifficultyTarget": 120,
 
 /* Set daemon type. Supported values: default, forknote (Fix block height + 1), bytecoin (ByteCoin Wallet RPC API, w/ block height fix), turtlecoin (ByteCoin Wallet RPC API but no block height fix required)  */
-"daemonType": "turtlecoin", //for plenteum, use turtlecoin here
+"daemonType": "bytecoin", 
 
 /* Set Cryptonight algorithm settings.
    Supported algorithms: cryptonight (default). cryptonight_light and cryptonight_heavy
@@ -196,7 +196,7 @@ Explanation for each field:
    Supported blob types: 0 (Cryptonote), 1 (Forknote v1), 2 (Forknote v2), 3 (Cryptonote v2 / Masari) */
 "cnAlgorithm": "cryptonight_light",
 "cnVariant": 1,
-"cnBlobType": 0,
+"cnBlobType": 2,
 
 /* Logging */
 "logging": {
