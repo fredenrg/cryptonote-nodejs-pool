@@ -337,7 +337,7 @@ Explanation for each field:
     "enabled": true,
     "interval": 300, // How often to run in seconds
     "maxAddresses": 50, // Split up payments if sending to more than this many addresses
-    "mixin": 5, // Number of transactions yours is indistinguishable from
+    "mixin": 0, // Number of transactions yours is indistinguishable from - default is 0 (no privacy)
     "priority": 0, // The transaction priority    
     "transferFee": 30000000, // Fee to pay for each transaction
     "dynamicTransferFee": true, // Enable dynamic transfer fee (fee is multiplied by number of miners)
