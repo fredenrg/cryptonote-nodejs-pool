@@ -345,7 +345,7 @@ Explanation for each field:
     "minPayment": 10000000000, // Miner balance required before sending payment
     "maxPayment": null, // Maximum miner balance allowed in miner settings
     "maxTransactionAmount": 0, // Split transactions by this amount (to prevent "too big transaction" error)
-    "denomination": 100000000 // Truncate to this precision and store remainder
+    "denomination": 10000 // Truncate to this precision and store remainder
 },
 
 /* Module that monitors the submitted block maturities and manages rounds. Confirmed
