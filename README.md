@@ -186,8 +186,8 @@ Explanation for each field:
 /* Coin network time to mine one block, see DIFFICULTY_TARGET constant in DAEMON_CODE/src/cryptonote_config.h */
 "coinDifficultyTarget": 120,
 
-/* Set daemon type. Supported values: default, forknote (Fix block height + 1), bytecoin (ByteCoin Wallet RPC API, w/ block height fix), turtlecoin (ByteCoin Wallet RPC API but no block height fix required)  */
-"daemonType": "turtlecoin", 
+/* Set daemon type. Supported values: default, forknote (Fix block height + 1), bytecoin (ByteCoin Wallet RPC API, w/ block height fix), plenteum (ByteCoin Wallet RPC API but no block height fix required)  */
+"daemonType": "plenteum", 
 
 /* Set Cryptonight algorithm settings.
    Supported algorithms: cryptonight (default). cryptonight_light and cryptonight_heavy
