@@ -5,7 +5,7 @@
     "symbol": "PLE",
     "coinUnits": 100000000,
     "coinDecimalPlaces": 2,
-    "coinDifficultyTarget": 30,
+    "coinDifficultyTarget": 120,
 
     "daemonType": "plenteum",
     "cnAlgorithm": "cryptonight_light",
