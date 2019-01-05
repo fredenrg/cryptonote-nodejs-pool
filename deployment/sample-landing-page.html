@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head lang="en">
     <meta charset="UTF-8">
@@ -139,6 +139,12 @@ function getPoolStats(poolID, poolURL) {
         }
         else if (cnAlgorithm == "cryptonight_heavy") {
             algorithm = 'Cryptonight Heavy';
+        }
+        else if (cnAlgorithm == "cryptonightturtle" || cnAlgorithm == "cryptonight-turtle") {
+            algorithm = 'Cryptonight Turtle';
+        }
+        else if (cnAlgorithm == "cryptonightturtlelite" || cnAlgorithm == "cryptonight-turtle-lite") {
+            algorithm = 'Cryptonight Turtle Lite';
         }
         else {
             if (cnVariant === 1) {

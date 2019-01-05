@@ -8,8 +8,8 @@
     "coinDifficultyTarget": 120,
 
     "daemonType": "plenteum",
-    "cnAlgorithm": "cryptonight_light",
-    "cnVariant": 1,
+    "cnAlgorithm": "cryptonight-turtle-lite",
+    "cnVariant": 2,
     "cnBlobType": 2,
 
     "logging": {
