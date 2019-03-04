@@ -1,8 +1,8 @@
 {
     "poolHost": "your.poolhost.tld",
 
-    "coin": "plenteum",
-    "symbol": "PLE",
+    "coin": "FRED",
+    "symbol": "FRED",
     "coinUnits": 1000000000,
     "coinDecimalPlaces": 4,
     "coinDifficultyTarget": 120,
