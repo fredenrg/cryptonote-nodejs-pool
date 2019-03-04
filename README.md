@@ -1,7 +1,7 @@
 cryptonote-nodejs-pool
 ======================
 
-High performance Node.js (with native C addons) mining pool for CryptoNote based coins. Comes with lightweight example front-end script which uses the pool's AJAX API. Support for Cryptonight (Original, Monero v7, Stellite v7), Cryptonight Light (Original, Aeon v7, IPBC) and Cryptonight Heavy (Sumokoin) algorithms.
+High performance Node.js (with native C addons) mining pool for CryptoNote based coins. Comes with lightweight example front-end script which uses the pool's AJAX API. Support for Cryptonight (Original, Monero v7, Stellite v7), Cryptonight Light (Original, Aeon v7, IPBC) and Cryptonight Heavy (Sumokoin) CN Turtlecoin algorithms.
 
 
 #### Table of Contents
@@ -156,13 +156,28 @@ sudo su - your-user
 Clone the repository and run `npm update` for all the dependencies to be installed:
 
 ```bash
-git clone https://github.com/plenteum/cryptonote-nodejs-pool.git pool
+git clone https://github.com/fredenrg/cryptonote-nodejs-pool.git pool
 cd pool
 
 npm update
 ```
 
 #### 2) Configuration
+To generate FRED-walletd container file;
+./FRED-walletd --generate-container --container-file=yourname --container-password=yourpassword
+
+Note: the FRED-walletd requires an RPC password to function and can be set in the config file eg:
+
+Create a .conf file
+cat>poolwallet.conf
+container-file = yourname
+container-password = yourpassword
+rpc-password = blahpass2(whatever you choose and set in config.json)
+bind-port = 8070
+bind-address = 127.0.0.1
+
+start as ./FRED-walletd --config poolwallet.conf
+
 
 Copy the `config_examples/COIN.json` file of your choice to `config.json` then overview each options and change any to match your preferred setup.
 
@@ -172,30 +187,30 @@ Explanation for each field:
 "poolHost": "your.pool.host",
 
 /* Used for storage in redis so multiple coins can share the same redis instance. */
-"coin": "plenteum",
+"coin": "FRED",
 
 /* Used for front-end display */
-"symbol": "PLE",
+"symbol": "FRED",
 
 /* Minimum units in a single coin, see COIN constant in DAEMON_CODE/src/cryptonote_config.h */
-"coinUnits": 100000000, // for plenteum, this is 100, 000, 000 (1 hundred million)
+"coinUnits": 1000000000, // for FRED, this is 1000, 000, 000 (1 thousand million)
 
 /* Number of coin decimals places for notifications and front-end */
-"coinDecimalPlaces": 2, //for plenteum, this should be "2"
+"coinDecimalPlaces": 3, //for FRED, this should be "3"
   
 /* Coin network time to mine one block, see DIFFICULTY_TARGET constant in DAEMON_CODE/src/cryptonote_config.h */
 "coinDifficultyTarget": 120,
 
-/* Set daemon type. Supported values: default, forknote (Fix block height + 1), bytecoin (ByteCoin Wallet RPC API, w/ block height fix), plenteum (ByteCoin Wallet RPC API but no block height fix required)  */
+/* Set daemon type. Supported values: default, forknote (Fix block height + 1), bytecoin (ByteCoin Wallet RPC API, w/ block height fix), plenteum (ByteCoin Wallet RPC API but no block height fix required) For FRED leave as plenteum  */
 "daemonType": "plenteum", 
 
-/* Set Cryptonight algorithm settings.
+/* Set Cryptonight algorithm settings (for FRED leave as is below (auto switch from cn-lite to cn turtle)) .
    Supported algorithms: cryptonight (default). cryptonight_light and cryptonight_heavy
    Supported variants for "cryptonight": 0 (Original), 1 (Monero v7), 3 (Stellite / XTL)
    Supported variants for "cryptonight_light": 0 (Original), 1 (Aeon v7), 2 (IPBC)
    Supported blob types: 0 (Cryptonote), 1 (Forknote v1), 2 (Forknote v2), 3 (Cryptonote v2 / Masari) */
-"cnAlgorithm": "cryptonight_light",
-"cnVariant": 1,
+"cnAlgorithm": "cryptonight-turtle-lite",
+"cnVariant": 2,
 "cnBlobType": 2,
 
 /* Logging */
@@ -261,17 +276,17 @@ Explanation for each field:
         },
         {
             "port": 5555,
-            "difficulty": 25000,
+            "difficulty": 50000,
             "desc": "High end hardware"
         },
         {
             "port": 7777,
-            "difficulty": 500000,
+            "difficulty": 250000,
             "desc": "Cloud-mining / NiceHash"
         },
         {
             "port": 8888,
-            "difficulty": 25000,
+            "difficulty": 500000,
             "desc": "Hidden port",
             "hidden": true // Hide this port in the front-end
         },
@@ -339,13 +354,13 @@ Explanation for each field:
     "maxAddresses": 50, // Split up payments if sending to more than this many addresses
     "mixin": 0, // Number of transactions yours is indistinguishable from - default is 0 (no privacy)
     "priority": 0, // The transaction priority    
-    "transferFee": 30000000, // Fee to pay for each transaction
+    "transferFee": 500000000, // Fee to pay for each transaction
     "dynamicTransferFee": true, // Enable dynamic transfer fee (fee is multiplied by number of miners)
     "minerPayFee" : true, // Miner pays the transfer fee instead of pool owner when using dynamic transfer fee
-    "minPayment": 10000000000, // Miner balance required before sending payment
-    "maxPayment": null, // Maximum miner balance allowed in miner settings
-    "maxTransactionAmount": 0, // Split transactions by this amount (to prevent "too big transaction" error)
-    "denomination": 10000 // Truncate to this precision and store remainder
+    "minPayment": 100000000000, // Miner balance required before sending payment
+    "maxPayment": 20000000000000, // Maximum miner balance allowed in miner settings
+    "maxTransactionAmount": 25000000000000, // Split transactions by this amount (to prevent "too big transaction" error)
+    "denomination": 1000000000 // Truncate to this precision and store remainder
 },
 
 /* Module that monitors the submitted block maturities and manages rounds. Confirmed
@@ -357,13 +372,13 @@ Explanation for each field:
 
     /* Block depth required for a block to unlocked/mature. Found in daemon source as
        the variable CRYPTONOTE_MINED_MONEY_UNLOCK_WINDOW */
-    "depth": 20,
-    "poolFee": 0.8, // 0.8% pool fee (1% total fee total including donations)
-    "devDonation": 0.2, // 0.2% donation to send to pool dev
+    "depth": 10,
+    "poolFee": 1.0, // 1% pool fee (1% total fee total including donations (better if everyone used the same fee)
+    "devDonation": 0.0, // 0% donation to send to pool dev
     "networkFee": 0.0, // Network/Governance fee (used by some coins like Loki)
     
     /* Some forknote coins have an issue with block height in RPC request, to fix you can enable this option.
-       See: https://github.com/forknote/forknote-pool/issues/48 */
+       See: https://github.com/forknote/forknote-pool/issues/48 FRED leave as false*/ 
     "fixBlockHeightRPC": false
 },
 
@@ -389,13 +404,14 @@ Explanation for each field:
 /* Coin daemon connection details (default port is 44016) */
 "daemon": {
     "host": "127.0.0.1",
-    "port": 44016
+    "port": 32809
 },
 
 /* Wallet daemon connection details */
 "wallet": {
     "host": "127.0.0.1",
     "port": 8070 /* for eg: specify any bind port you like - should math the --rpc-bind-port of your service startup command (default:8070)*/
+     "password": "**YOUR WALLET RPC PASSWORD"
 },
 
 /* Redis connection info (default port is 6379) */
