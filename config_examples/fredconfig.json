@@ -3,8 +3,8 @@
 
     "coin": "plenteum",
     "symbol": "PLE",
-    "coinUnits": 100000000,
-    "coinDecimalPlaces": 2,
+    "coinUnits": 1000000000,
+    "coinDecimalPlaces": 4,
     "coinDifficultyTarget": 120,
 
     "daemonType": "plenteum",
@@ -38,32 +38,32 @@
             {
                 "port": 3333,
                 "difficulty": 5000,
-                "desc": "Low end hardware"
+                "desc": "Low end hardware / PC"
             },
             {
                 "port": 4444,
-                "difficulty": 15000,
+                "difficulty": 50000,
                 "desc": "Mid range hardware"
             },
             {
                 "port": 5555,
-                "difficulty": 25000,
+                "difficulty": 100000,
                 "desc": "High end hardware"
             },
             {
                 "port": 7777,
-                "difficulty": 500000,
-                "desc": "Cloud-mining / NiceHash"
+                "difficulty": 250000,
+                "desc": "Rig"
             },
             {
                 "port": 8888,
-                "difficulty": 25000,
-                "desc": "Hidden port",
+                "difficulty": 500000,
+                "desc": "Big Rig",
                 "hidden": true
             },
             {
                 "port": 9999,
-                "difficulty": 20000,
+                "difficulty": 100000,
                 "desc": "SSL connection",
                 "ssl": true
             }
@@ -108,15 +108,15 @@
         "enabled": true,
         "interval": 600,
         "maxAddresses": 50,
-        "mixin": 0,
+        "mixin": 3,
         "priority": 0,
-        "transferFee": 30000000,
+        "transferFee": 500000000,
         "dynamicTransferFee": true,
         "minerPayFee" : true,
-        "minPayment": 10000000000,
-        "maxPayment": null,
-        "maxTransactionAmount": 0,
-        "denomination": 10000
+        "minPayment": 100000000000,
+        "maxPayment": 20000000000000,
+        "maxTransactionAmount": 25000000000000,
+        "denomination": 1000000000
     },
 
     "blockUnlocker": {
@@ -148,7 +148,7 @@
 
     "daemon": {
         "host": "127.0.0.1",
-        "port": 44016
+        "port": 32809
     },
 
     "wallet": {
