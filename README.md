@@ -196,7 +196,7 @@ Explanation for each field:
 "coinUnits": 1000000000, // for FRED, this is 1000, 000, 000 (1 thousand million)
 
 /* Number of coin decimals places for notifications and front-end */
-"coinDecimalPlaces": 3, //for FRED, this should be "3"
+"coinDecimalPlaces": 3, //for FRED, this can be "3"
   
 /* Coin network time to mine one block, see DIFFICULTY_TARGET constant in DAEMON_CODE/src/cryptonote_config.h */
 "coinDifficultyTarget": 120,
