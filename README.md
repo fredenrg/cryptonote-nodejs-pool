@@ -251,7 +251,7 @@ Explanation for each field:
     "poolAddress": "<your plenteum address here>", //note that this is the address block reqards are paid to, so should be the wallet your connected to in poolwallet
 
     /* This is the integrated address prefix used for miner login validation. */
-    "intAddressPrefix": 18181,
+    "intAddressPrefix": 498372068,
 
     /* Poll RPC daemons for new blocks every this many milliseconds. */
     "blockRefreshInterval": 1000,
@@ -313,12 +313,12 @@ Explanation for each field:
     /* Set difficulty on miner client side by passing <address> param with +<difficulty> postfix */
     "fixedDiff": {
         "enabled": true,
-        "separator": "+", // Character separator between <address> and <difficulty>
+        "separator": ".", // Character separator between <address> and <difficulty>
     },
 
     /* Set payment ID on miner client side by passing <address>.<paymentID> */
     "paymentId": {
-        "addressSeparator": "." // Character separator between <address> and <paymentID>
+        "addressSeparator": "+" // Character separator between <address> and <paymentID>
     },
 
     /* Feature to trust share difficulties from miners which can
